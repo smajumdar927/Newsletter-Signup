@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const request = require('request');
 const https = require('https');
+require('dotenv').config();
+
 
 const app = express();
 
@@ -33,10 +35,10 @@ app.post('/', function (req, res) {
 	const jsonData = JSON.stringify(data);
 
 	const url = 'https://us18.api.mailchimp.com/3.0/lists/481fa17e58';
-
+	const api_key = process.env.API_KEY
 	const options = {
 		method: 'POST',
-		auth: 'smajumdar1:3544c0c649cd44d5e013a57ffb8c2ec5-us18',
+		auth: `smajumdar1: ${api_key}`,
 	};
 
 	const request = https.request(url, options, function (response) {
@@ -63,8 +65,4 @@ app.listen(process.env.PORT || 3000, function () {
 	console.log('server running on port 3000');
 });
 
-// API Keys
-// 3544c0c649cd44d5e013a57ffb8c2ec5-us18
 
-//List ID
-// 481fa17e58
