@@ -37,7 +37,7 @@ app.post('/', function (req, res) {
 	const api_key = process.env.API_KEY;
 	const options = {
 		method: 'POST',
-		auth: `smajumdar1: ${api_key}` ,
+		auth: 'smajumdar1:' + api_key ,
 	};
 
 	const request = https.request(url, options, function (response) {
@@ -48,7 +48,7 @@ app.post('/', function (req, res) {
 		}
 
 		response.on('data', function (data) {
-			console.log(JSON.parse(data));
+			// console.log(JSON.parse(data));
 		});
 	});
 	request.write(jsonData);
